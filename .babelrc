@@ -1,0 +1,4 @@
+{
+    "presets":["@babel/preset-env"]
+    //de esta manera babel detecta y convierte nuestro código
+}
