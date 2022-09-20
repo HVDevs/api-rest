@@ -4,19 +4,19 @@ import {
 } from "./../database/database"
 //Uso para crear usuarios
 import bcrypt from "bcrypt"
+//Generador de token
+import generateJWT from "../helpers/jwt"
 
 //Nos logeamos
 const login = async (req, res) => {
     const user = req.body.user
     const pass = req.body.pass
 
-    let passwordHash = await bcrypt.hash(pass, 8)
-
     try {
         if (user && pass) {
             const connection = await connect
 
-            const result = await connection.query('SELECT * FROM users WHERE user = ?', [user],
+            await connection.query('SELECT * FROM users WHERE user = ?', [user],
                 async (error, results) => {
                     if (results.length == 0 || !(await bcrypt.compare(pass, results[0].pass))) {
                         res.render('login', {
@@ -31,6 +31,7 @@ const login = async (req, res) => {
                     } else {
                         req.session.loggedin = true //Estado logeado
                         req.session.name = results[0].name //Obtenemos el nombre del usuario
+                        req.session.token = await generateJWT(results[0].id) //Generamos el token de acceso
                         res.render('login', {
                             alert: true,
                             alertTitle: 'Conexion exitosa',
@@ -101,10 +102,12 @@ const register = async (req, res) => {
 
 //Auth
 const auth = (req, res) => {
+    //Al renderizar, pasamos las variables para mostrar
     if (req.session.loggedin) {
         res.render('index', {
             login: true,
-            name: req.session.name
+            name: req.session.name,
+            token: req.session.token
         })
     } else {
         res.render('index', {

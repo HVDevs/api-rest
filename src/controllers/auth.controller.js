@@ -5,6 +5,10 @@ import generateJWT from "../helpers/jwt"
 const login = async (req, res) => {
     /**
      * En el login enviamos el usuario y contraseña
+     * Este lo usamos de prueba, segun los ejercicios dados en clase
+     * El endpoint que maneja es: localhost:3000/authUser
+     * Los archivos y metodos:
+     * auth.controller.js, auth.routes.js, jwt.js (genera el token)
      */
     try{
         const connection = await connect
@@ -24,7 +28,6 @@ const login = async (req, res) => {
             })
         } else {
             //Si existe el user, generamos el token
-            console.log('aqui');
             const token = await generateJWT(result[0].id)
             return res.status(200).json({
                 ok: true,

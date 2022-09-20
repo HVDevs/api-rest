@@ -12,6 +12,7 @@
     <% if(login) { %>
         <h2>El usuario conectado es: <strong><%= name %></strong></h2>
         <a href="logout" class="a-logout">Logout</a>
+        <h2>Token: <%= token %></h2>
     <% } else { %>
         <h1><strong><%= name %></strong></h1>
         <a href="login" class="a-login">Ir al LOGIN</a>

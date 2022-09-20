@@ -1,19 +1,20 @@
 //En este archivo manejamos las rutas dedicadas a nuestros productos
 import { Router } from "express";
 import { check } from "express-validator";
-import { methods, methods as userMethods } from "../controllers/user.controller";
+import { methods as userMethods } from "../controllers/user.controller";
 import { methods as fieldValidator } from "../middleware/fields.validator";
+
 //Creamos un enrutador para manejar las rutas
 const router = Router()
 
 //Rederizamos la plantilla de las vistas
-router.get('/', methods.auth)
+router.get('/', userMethods.auth)
 
 //Renderizamos la pagina de login
 router.get('/login', (req, res) => {
     res.render('login')
 })
-router.post('/auth', methods.login)
+router.post('/auth', userMethods.login)
 
 //Rederizamos la pagina de registro
 router.get('/register', (req, res) => {
