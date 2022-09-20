@@ -4,6 +4,6 @@ import { methods as authMethods } from "./../controllers/auth.controller"
 
 const router = Router()
 
-router.post('/auth', authMethods.login)
+router.post('/authUser', authMethods.login)
 
 export default router

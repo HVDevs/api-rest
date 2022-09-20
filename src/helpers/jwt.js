@@ -4,10 +4,10 @@
 //Instalamos la dependencia jsonwebtoken
 
 //Generamos el JsonWebToken (cada vez que hacemos un login)
-import { jwt } from 'jsonwebtoken'
+const jwt = require('jsonwebtoken');
 
 //Obtenemos el uid del usuario para generar el token
-const generateJWT = () => {
+const generateJWT = (uid) => {
     return new Promise((resolve, rejected) => {
         //El token esta dividido en 3 partes, header, cuerpo y firma
         //El payload contendra la info del usuario
@@ -15,14 +15,13 @@ const generateJWT = () => {
             uid
         }
         //Traemos la firma para crear el token desde el .env
-        jwt.sign(payload, process.env.JWT_SECRET), {
-            expiresIn: '12hs' //En cuanto expira el token
-        } (err, token => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' }, (err, token) => {
             if(err){
                 console.log(err);
                 rejected('No se pudo crear el token')
             }
             else {
+                //Se genera el token
                 resolve(token)
             }
         })
