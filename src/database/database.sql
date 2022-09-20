@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2022 a las 21:52:38
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 20-09-2022 a las 02:57:37
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,7 +64,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user`, `name`, `rol`, `pass`) VALUES
-(9, 'admin', 'Roberto', 'admin', '$2b$08$MsnDZGL18ZB3J.MvEpaYRuVuerTj0.h4.IuCeWe6gOpnrPwb8wtlO');
+(9, 'admin', 'Roberto', 'admin', '$2b$08$MsnDZGL18ZB3J.MvEpaYRuVuerTj0.h4.IuCeWe6gOpnrPwb8wtlO'),
+(10, 'javi', 'Javier', 'admin', '$2b$08$bKIKMOoj0BES4M1XzOBvBeKGrBgHMTDnDDFzpbAFOOqDBpbB9Dlv6'),
+(11, 'roberto27111989@gmail.com', 'Roberto', 'admin', '$2b$08$ZrVolafoFJ90rENe7YCDMeUx6uMPSqzcEfAMVm2IbqyKY77a7CkPy');
 
 --
 -- Índices para tablas volcadas
@@ -96,7 +98,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

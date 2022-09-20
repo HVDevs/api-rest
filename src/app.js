@@ -3,6 +3,7 @@ import morgan from "morgan"
 //Rutas
 import productRoutes from "./routes/product.routes" //Productos
 import userRoutes from "./routes/user.routes" //Usuarios
+import authRoutes from "./routes/auth.routes" //Usuarios
 
 /*express framework que nos permite crear un servidor web
 y manejar nuestras rutas a través de peticiones http:
@@ -41,6 +42,6 @@ app.use(session({
 }))
 
 //Le indicamos la ruta de nuestros productos y los usuarios
-app.use(productRoutes, userRoutes)
+app.use(productRoutes, userRoutes, authRoutes)
 
 export default app
